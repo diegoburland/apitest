@@ -42,8 +42,11 @@ class TagRoutes {
             res.json({ data: tagInserted });
         });
     }
-    update() {
+    update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            console.log(req.body);
+            // TagModel.findByIdAndUpdate();
         });
     }
     delete() {

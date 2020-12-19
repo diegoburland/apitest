@@ -29,7 +29,10 @@ class TagRoutes {
         res.json({data: tagInserted});
     }
 
-    async update(){
+    async update(req:Request, res:Response){
+        console.log(req.params.id);
+        console.log(req.body);
+        // TagModel.findByIdAndUpdate();
 
     }
 
