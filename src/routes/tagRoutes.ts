@@ -30,13 +30,20 @@ class TagRoutes {
     }
 
     async update(req:Request, res:Response){
-        console.log(req.params.id);
-        console.log(req.body);
-        // TagModel.findByIdAndUpdate();
+        const _id = req.params.id;
+        const body = req.body;
+        const tagUpdated = await TagModel.findByIdAndUpdate(_id, body, {new:true});
+
+        res.json({data: tagUpdated});
 
     }
 
-    async delete(){
+    async delete(req:Request, res:Response){
+        const _id = req.params.id;
+        await TagModel.findByIdAndDelete(_id);
+        res.json({
+            response: 'delete success'
+        })
 
     }
 

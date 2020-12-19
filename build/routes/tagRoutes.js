@@ -44,13 +44,19 @@ class TagRoutes {
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.params.id);
-            console.log(req.body);
-            // TagModel.findByIdAndUpdate();
+            const _id = req.params.id;
+            const body = req.body;
+            const tagUpdated = yield tagModel_1.default.findByIdAndUpdate(_id, body, { new: true });
+            res.json({ data: tagUpdated });
         });
     }
-    delete() {
+    delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const _id = req.params.id;
+            yield tagModel_1.default.findByIdAndDelete(_id);
+            res.json({
+                response: 'delete success'
+            });
         });
     }
     routes() {
